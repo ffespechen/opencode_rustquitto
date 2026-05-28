@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  mqtt-broker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rustquitto:latest
+    container_name: rustquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped
+    environment:
+      RUST_LOG: info
